@@ -6,7 +6,7 @@ NTFS MFT (master file table) raw reader and parser
 ##Usage
 
 ```c#
-string vol = "c:\";
+string vol = "c:";
 var fileList = new NTFSDirect.Enumerator(vol);
 foreach(string file in fileList) {
 	FileInfo f = new FileInfo(file);
