@@ -15,3 +15,4 @@ foreach(string file in fileList) {
 }
 ```
 
+This code is based on the work found [here](http://code.google.com/p/phever/source/browse/trunk/mft/mftdb/mftdb/CChangeJournal.cs?r=32)
