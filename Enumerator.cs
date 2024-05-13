@@ -20,11 +20,15 @@ namespace NTFSDirect
 {
 	public class Enumerator : IEnumerable<string>
 	{
-		public Enumerator(string volume) //volume is "c:" format (no quotes)
+		//volume is "c:" format (no quotes)
+		//extensions is "new [] {".txt", ".md"}" format
+		public Enumerator(string volume, string[] extensions = null) 
 		{
 			_volume = volume;
+			if (extensions != null) _extensions = new HashSet<string>(extensions);
 		}
 		private string _volume;
+		private HashSet<string> _extensions = null;
 
 		public int Count { get {
 			Init();
@@ -38,7 +42,7 @@ namespace NTFSDirect
 		{
 			if (_files != null) { return; }
 			var ntfs = new NTFSDirect.Volume();
-			ntfs.EnumerateVolume(_volume,null,out _files,out _folders);
+			ntfs.EnumerateVolume(_volume, _extensions, out _files, out _folders);
 		}
 
 		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
